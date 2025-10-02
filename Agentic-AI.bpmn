@@ -1,0 +1,2399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.31.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:process id="Infy_V1" name="Infy_Ticket_Routing_V1" isExecutable="true">
+    <bpmn:extensionElements>
+      <zeebe:userTaskForm id="UserTaskForm_29csdoc">{
+  "components": [
+    {
+      "text": "## ISG Department",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_16uqktw",
+        "columns": null
+      },
+      "id": "Field_1rmey98"
+    },
+    {
+      "components": [
+        {
+          "label": "Employee Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_10ree63",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Employee Email",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_1ppq70o",
+          "key": "emailAddress",
+          "readonly": true,
+          "validate": {
+            "validationType": "email"
+          }
+        },
+        {
+          "label": "Issue Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_07p7bfr"
+          },
+          "id": "Textarea_1",
+          "key": "issueDescription",
+          "readonly": true,
+          "validate": {
+            "minLength": 10,
+            "maxLength": 500,
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "label": "Ticket Details",
+      "type": "group",
+      "layout": {
+        "row": "Row_0klgkt2",
+        "columns": null
+      },
+      "id": "Field_1px8oke"
+    },
+    {
+      "components": [
+        {
+          "values": [
+            {
+              "value": "feedback",
+              "label": "Retry with Feedback"
+            },
+            {
+              "value": "HR",
+              "label": "Route to HR"
+            },
+            {
+              "value": "CAG",
+              "label": "Route to CAG"
+            },
+            {
+              "value": "FFD",
+              "label": "Route to FFD"
+            },
+            {
+              "value": "CCD",
+              "label": "Route to CCD"
+            },
+            {
+              "label": "Resolved",
+              "value": "resolved"
+            }
+          ],
+          "label": "Route to Different Department",
+          "type": "select",
+          "layout": {
+            "row": "Row_1d2z451",
+            "columns": 16
+          },
+          "id": "Select_3",
+          "key": "route",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=ticket=true"
+          }
+        },
+        {
+          "label": "Feedback",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0n5g3jq"
+          },
+          "id": "Textarea_4",
+          "key": "feedback",
+          "validate": {
+            "required": true,
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "description": "Provide your feedback here"
+        }
+      ],
+      "showOutline": true,
+      "label": "Assignee Window",
+      "type": "group",
+      "layout": {
+        "row": "Row_1xqhqxf",
+        "columns": null
+      },
+      "id": "Field_1r5q07m"
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.28.0"
+  },
+  "schemaVersion": 16,
+  "id": "p1-06u5rjm",
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_3b6ocg3">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "addcace"
+  },
+  "schemaVersion": 18,
+  "id": "hr-department-0maeui0",
+  "components": [
+    {
+      "text": "## Issue Description",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2"
+      },
+      "id": "Text_0"
+    },
+    {
+      "label": "Issue Description",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0uo5f69"
+      },
+      "id": "Textarea_1",
+      "key": "issueDescription",
+      "readonly": true,
+      "validate": {
+        "minLength": 10,
+        "maxLength": 1000,
+        "required": true
+      },
+      "description": "Enter the issue description"
+    },
+    {
+      "text": "## Response",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ebxjsp"
+      },
+      "id": "Text_2"
+    },
+    {
+      "label": "Select",
+      "values": [
+        {
+          "value": "CAG",
+          "label": "Route To CAG"
+        },
+        {
+          "value": "FFD",
+          "label": "Route To FFD"
+        },
+        {
+          "value": "CCD",
+          "label": "Route To CCD"
+        },
+        {
+          "label": "Route To ISG",
+          "value": "ISG"
+        },
+        {
+          "label": "Resolved",
+          "value": "resolved"
+        },
+        {
+          "label": "Retry with FeedBack",
+          "value": "feedback"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0fendk9"
+      },
+      "id": "Select_3",
+      "key": "route",
+      "validate": {
+        "required": true
+      },
+      "description": "Select the appropriate route"
+    },
+    {
+      "label": "Feedback",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17yk4za"
+      },
+      "id": "Textarea_4",
+      "key": "feedback",
+      "validate": {
+        "required": true,
+        "minLength": 20,
+        "maxLength": 1000
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_1ulj9hi">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "addcace"
+  },
+  "schemaVersion": 18,
+  "id": "ffc-department-1v0k779",
+  "components": [
+    {
+      "text": "## Issue Description",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2"
+      },
+      "id": "Text_0"
+    },
+    {
+      "label": "Issue Description",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0uo5f69"
+      },
+      "id": "Textarea_1",
+      "key": "issueDescription",
+      "readonly": true,
+      "validate": {
+        "minLength": 10,
+        "maxLength": 1000,
+        "required": true
+      },
+      "description": "Enter the issue description"
+    },
+    {
+      "text": "## Response",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ebxjsp"
+      },
+      "id": "Text_2"
+    },
+    {
+      "label": "Select",
+      "values": [
+        {
+          "value": "CAG",
+          "label": "Route To CAG"
+        },
+        {
+          "value": "ISG",
+          "label": "Route To ISG"
+        },
+        {
+          "value": "CCD",
+          "label": "Route To CCD"
+        },
+        {
+          "label": "Route to HR",
+          "value": "HR"
+        },
+        {
+          "label": "Resolved",
+          "value": "resolved"
+        },
+        {
+          "label": "Retry with Feedback",
+          "value": "feedback"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0fendk9"
+      },
+      "id": "Select_3",
+      "key": "route",
+      "validate": {
+        "required": true
+      },
+      "description": "Select the appropriate route"
+    },
+    {
+      "label": "Feedback",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17yk4za"
+      },
+      "id": "Textarea_4",
+      "key": "feedback",
+      "validate": {
+        "required": true,
+        "minLength": 20,
+        "maxLength": 1000
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_0qf6gf3">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "addcace"
+  },
+  "schemaVersion": 18,
+  "id": "cag-department-1pe1n7s",
+  "components": [
+    {
+      "text": "## Issue Description",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2"
+      },
+      "id": "Text_0"
+    },
+    {
+      "label": "Issue Description",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0uo5f69"
+      },
+      "id": "Textarea_1",
+      "key": "issueDescription",
+      "readonly": true,
+      "validate": {
+        "minLength": 10,
+        "maxLength": 1000,
+        "required": true
+      },
+      "description": "Enter the issue description"
+    },
+    {
+      "text": "## Response",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ebxjsp"
+      },
+      "id": "Text_2"
+    },
+    {
+      "label": "Select",
+      "values": [
+        {
+          "value": "resolved",
+          "label": "Resolved"
+        },
+        {
+          "value": "feedback",
+          "label": "Retry With Feedback"
+        },
+        {
+          "value": "HR",
+          "label": "Route To HR"
+        },
+        {
+          "label": "Route To CCD",
+          "value": "CCD"
+        },
+        {
+          "label": "Route To  ISG",
+          "value": "ISG"
+        },
+        {
+          "label": "Route To  FFD",
+          "value": "FFD"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0fendk9"
+      },
+      "id": "Select_3",
+      "key": "route",
+      "validate": {
+        "required": true
+      },
+      "description": "Select the appropriate route"
+    },
+    {
+      "label": "Feedback",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17yk4za"
+      },
+      "id": "Textarea_4",
+      "key": "feedback",
+      "validate": {
+        "required": true,
+        "minLength": 20,
+        "maxLength": 1000
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_16353sk">{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "addcace"
+  },
+  "schemaVersion": 18,
+  "id": "others-0zl2kao",
+  "components": [
+    {
+      "text": "## Issue Description",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2"
+      },
+      "id": "Text_0"
+    },
+    {
+      "label": "Issue Description",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0uo5f69"
+      },
+      "id": "Textarea_1",
+      "key": "issueDescription",
+      "readonly": true,
+      "validate": {
+        "minLength": 10,
+        "maxLength": 1000,
+        "required": true
+      },
+      "description": "Enter the issue description"
+    },
+    {
+      "text": "## Response",
+      "type": "text",
+      "layout": {
+        "row": "Row_1ebxjsp"
+      },
+      "id": "Text_2"
+    },
+    {
+      "label": "Select",
+      "values": [
+        {
+          "value": "resolved",
+          "label": "Resolved"
+        },
+        {
+          "value": "feedback",
+          "label": "Retry With Feedback"
+        },
+        {
+          "value": "HR",
+          "label": "Route To HR"
+        },
+        {
+          "label": "Route To CCD",
+          "value": "CCD"
+        },
+        {
+          "label": "Route To ISG",
+          "value": "ISG"
+        },
+        {
+          "label": "Route To FFD",
+          "value": "FFD"
+        },
+        {
+          "label": "Route To  CAG",
+          "value": "CAG"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0fendk9"
+      },
+      "id": "Select_3",
+      "key": "route",
+      "validate": {
+        "required": true
+      },
+      "description": "Select the appropriate route"
+    },
+    {
+      "label": "Feedback",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_17yk4za"
+      },
+      "id": "Textarea_4",
+      "key": "feedback",
+      "validate": {
+        "required": true,
+        "minLength": 20,
+        "maxLength": 1000
+      }
+    }
+  ],
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_3d3qbf4">{
+  "components": [
+    {
+      "text": "## CCD Department",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_16uqktw",
+        "columns": null
+      },
+      "id": "Field_1rmey98"
+    },
+    {
+      "text": "### Sub-category:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2",
+        "columns": 9
+      },
+      "id": "Field_0nveo1g"
+    },
+    {
+      "text": "Laptop",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2",
+        "columns": null
+      },
+      "id": "Field_019w69t"
+    },
+    {
+      "components": [
+        {
+          "label": "Employee Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_10ree63",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Employee Email",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_1ppq70o",
+          "key": "emailAddress",
+          "readonly": true,
+          "validate": {
+            "validationType": "email"
+          }
+        },
+        {
+          "label": "Issue Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_07p7bfr"
+          },
+          "id": "Textarea_1",
+          "key": "issueDescription",
+          "readonly": true,
+          "validate": {
+            "minLength": 10,
+            "maxLength": 500,
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "label": "Ticket Details",
+      "type": "group",
+      "layout": {
+        "row": "Row_0klgkt2",
+        "columns": null
+      },
+      "id": "Field_1px8oke"
+    },
+    {
+      "components": [
+        {
+          "text": "#### Refer Possible Solutions here",
+          "type": "text",
+          "layout": {
+            "row": "Row_0qip1nw",
+            "columns": null
+          },
+          "id": "Field_1d6ar9k"
+        },
+        {
+          "label": "solutions",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0bdntw1",
+            "columns": null
+          },
+          "id": "Field_0fuyv6r",
+          "key": "solutions",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_1rti7p4",
+        "columns": null
+      },
+      "id": "Field_12uxtta",
+      "verticalAlignment": "center"
+    },
+    {
+      "components": [
+        {
+          "label": "This Ticket Related to our Department?",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_0cqiep1",
+            "columns": null
+          },
+          "id": "Field_0wapln3",
+          "key": "ticket",
+          "validate": {
+            "required": false
+          }
+        },
+        {
+          "values": [
+            {
+              "label": "Resolved",
+              "value": "resolved"
+            },
+            {
+              "label": "Route to Software Installation",
+              "value": "software installations"
+            },
+            {
+              "label": "Route to Spare Parts",
+              "value": "spare parts"
+            }
+          ],
+          "label": "Resolve or Route to Internal Sub category",
+          "type": "select",
+          "layout": {
+            "row": "Row_0hffbbn",
+            "columns": null
+          },
+          "id": "Field_1c0f0hk",
+          "key": "subroute",
+          "conditional": {
+            "hide": "=ticket=false"
+          },
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "values": [
+            {
+              "value": "feedback",
+              "label": "Retry with Feedback"
+            },
+            {
+              "value": "HR",
+              "label": "Route to HR"
+            },
+            {
+              "value": "CAG",
+              "label": "Route to CAG"
+            },
+            {
+              "value": "FFD",
+              "label": "Route to FFD"
+            },
+            {
+              "value": "ISG",
+              "label": "Route to ISG"
+            }
+          ],
+          "label": "Route to Different Department",
+          "type": "select",
+          "layout": {
+            "row": "Row_1d2z451",
+            "columns": 16
+          },
+          "id": "Select_3",
+          "key": "route",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=ticket=true"
+          }
+        },
+        {
+          "label": "Feedback",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0n5g3jq"
+          },
+          "id": "Textarea_4",
+          "key": "feedback",
+          "validate": {
+            "required": true,
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "description": "Provide your feedback here"
+        }
+      ],
+      "showOutline": true,
+      "label": "Assignee Window",
+      "type": "group",
+      "layout": {
+        "row": "Row_1xqhqxf",
+        "columns": null
+      },
+      "id": "Field_1r5q07m"
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.28.0"
+  },
+  "schemaVersion": 16,
+  "id": "p1-06u5rjm",
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_2ka3cjc">{
+  "components": [
+    {
+      "text": "## CCD Department",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_16uqktw",
+        "columns": null
+      },
+      "id": "Field_1rmey98"
+    },
+    {
+      "text": "### Sub-category:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2",
+        "columns": 9
+      },
+      "id": "Field_0nveo1g"
+    },
+    {
+      "text": "Software Installation",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2",
+        "columns": null
+      },
+      "id": "Field_019w69t"
+    },
+    {
+      "components": [
+        {
+          "label": "Employee Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_10ree63",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Employee Email",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_1ppq70o",
+          "key": "emailAddress",
+          "readonly": true,
+          "validate": {
+            "validationType": "email"
+          }
+        },
+        {
+          "label": "Issue Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_07p7bfr"
+          },
+          "id": "Textarea_1",
+          "key": "issueDescription",
+          "readonly": true,
+          "validate": {
+            "minLength": 10,
+            "maxLength": 500,
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "label": "Ticket Details",
+      "type": "group",
+      "layout": {
+        "row": "Row_0klgkt2",
+        "columns": null
+      },
+      "id": "Field_1px8oke"
+    },
+    {
+      "components": [
+        {
+          "text": "#### Refer Possible Solutions here",
+          "type": "text",
+          "layout": {
+            "row": "Row_0qip1nw",
+            "columns": null
+          },
+          "id": "Field_1d6ar9k"
+        },
+        {
+          "label": "solutions",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0bdntw1",
+            "columns": null
+          },
+          "id": "Field_0fuyv6r",
+          "key": "solutions",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_1rti7p4",
+        "columns": null
+      },
+      "id": "Field_12uxtta",
+      "verticalAlignment": "center"
+    },
+    {
+      "components": [
+        {
+          "label": "This Ticket Related to our Department?",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_0cqiep1",
+            "columns": null
+          },
+          "id": "Field_0wapln3",
+          "key": "ticket",
+          "validate": {
+            "required": false
+          }
+        },
+        {
+          "values": [
+            {
+              "label": "Resolved",
+              "value": "resolved"
+            },
+            {
+              "label": "Route to Laptop",
+              "value": "Laptop"
+            },
+            {
+              "label": "Route to Spare Parts",
+              "value": "spare parts"
+            }
+          ],
+          "label": "Resolve or Route to Internal Sub category",
+          "type": "select",
+          "layout": {
+            "row": "Row_0hffbbn",
+            "columns": null
+          },
+          "id": "Field_1c0f0hk",
+          "key": "subroute",
+          "conditional": {
+            "hide": "=ticket=false"
+          },
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "values": [
+            {
+              "value": "feedback",
+              "label": "Retry with Feedback"
+            },
+            {
+              "value": "HR",
+              "label": "Route to HR"
+            },
+            {
+              "value": "CAG",
+              "label": "Route to CAG"
+            },
+            {
+              "value": "FFD",
+              "label": "Route to FFD"
+            },
+            {
+              "value": "ISG",
+              "label": "Route to ISG"
+            }
+          ],
+          "label": "Route to Different Department",
+          "type": "select",
+          "layout": {
+            "row": "Row_1d2z451",
+            "columns": 16
+          },
+          "id": "Select_3",
+          "key": "route",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=ticket=true"
+          }
+        },
+        {
+          "label": "Feedback",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0n5g3jq"
+          },
+          "id": "Textarea_4",
+          "key": "feedback",
+          "validate": {
+            "required": true,
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "description": "Provide your feedback here"
+        }
+      ],
+      "showOutline": true,
+      "label": "Assignee Window",
+      "type": "group",
+      "layout": {
+        "row": "Row_1xqhqxf",
+        "columns": null
+      },
+      "id": "Field_1r5q07m"
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.28.0"
+  },
+  "schemaVersion": 16,
+  "id": "p1-06u5rjm",
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_04cidgg">{
+  "components": [
+    {
+      "text": "## CCD Department",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_16uqktw",
+        "columns": null
+      },
+      "id": "Field_1rmey98"
+    },
+    {
+      "text": "### Sub-category:",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2",
+        "columns": 9
+      },
+      "id": "Field_0nveo1g"
+    },
+    {
+      "text": "Spare Parts",
+      "label": "Text view",
+      "type": "text",
+      "layout": {
+        "row": "Row_154g8z2",
+        "columns": null
+      },
+      "id": "Field_019w69t"
+    },
+    {
+      "components": [
+        {
+          "label": "Employee Name",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_10ree63",
+          "key": "fullName",
+          "readonly": true
+        },
+        {
+          "label": "Employee Email",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_078vni9",
+            "columns": null
+          },
+          "id": "Field_1ppq70o",
+          "key": "emailAddress",
+          "readonly": true,
+          "validate": {
+            "validationType": "email"
+          }
+        },
+        {
+          "label": "Issue Description",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_07p7bfr"
+          },
+          "id": "Textarea_1",
+          "key": "issueDescription",
+          "readonly": true,
+          "validate": {
+            "minLength": 10,
+            "maxLength": 500,
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "label": "Ticket Details",
+      "type": "group",
+      "layout": {
+        "row": "Row_0klgkt2",
+        "columns": null
+      },
+      "id": "Field_1px8oke"
+    },
+    {
+      "components": [
+        {
+          "text": "#### Refer Possible Solutions here",
+          "type": "text",
+          "layout": {
+            "row": "Row_0qip1nw",
+            "columns": null
+          },
+          "id": "Field_1d6ar9k"
+        },
+        {
+          "label": "solutions",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0bdntw1",
+            "columns": null
+          },
+          "id": "Field_0fuyv6r",
+          "key": "solutions",
+          "readonly": true
+        }
+      ],
+      "showOutline": true,
+      "label": "",
+      "type": "group",
+      "layout": {
+        "row": "Row_1rti7p4",
+        "columns": null
+      },
+      "id": "Field_12uxtta",
+      "verticalAlignment": "center"
+    },
+    {
+      "components": [
+        {
+          "label": "This Ticket Related to our Department?",
+          "type": "checkbox",
+          "layout": {
+            "row": "Row_0cqiep1",
+            "columns": null
+          },
+          "id": "Field_0wapln3",
+          "key": "ticket",
+          "validate": {
+            "required": false
+          }
+        },
+        {
+          "values": [
+            {
+              "label": "Resolved",
+              "value": "resolved"
+            },
+            {
+              "label": "Route to Laptop",
+              "value": "Laptop"
+            },
+            {
+              "label": "Route to Software installation",
+              "value": "software installations"
+            }
+          ],
+          "label": "Resolve or Route to Internal Sub category",
+          "type": "select",
+          "layout": {
+            "row": "Row_0hffbbn",
+            "columns": null
+          },
+          "id": "Field_1c0f0hk",
+          "key": "subroute",
+          "conditional": {
+            "hide": "=ticket=false"
+          },
+          "validate": {
+            "required": true
+          }
+        },
+        {
+          "values": [
+            {
+              "value": "feedback",
+              "label": "Retry with Feedback"
+            },
+            {
+              "value": "HR",
+              "label": "Route to HR"
+            },
+            {
+              "value": "CAG",
+              "label": "Route to CAG"
+            },
+            {
+              "value": "FFD",
+              "label": "Route to FFD"
+            },
+            {
+              "value": "ISG",
+              "label": "Route to ISG"
+            }
+          ],
+          "label": "Route to Different Department",
+          "type": "select",
+          "layout": {
+            "row": "Row_1d2z451",
+            "columns": 16
+          },
+          "id": "Select_3",
+          "key": "route",
+          "validate": {
+            "required": true
+          },
+          "conditional": {
+            "hide": "=ticket=true"
+          }
+        },
+        {
+          "label": "Feedback",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_0n5g3jq"
+          },
+          "id": "Textarea_4",
+          "key": "feedback",
+          "validate": {
+            "required": true,
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "description": "Provide your feedback here"
+        }
+      ],
+      "showOutline": true,
+      "label": "Assignee Window",
+      "type": "group",
+      "layout": {
+        "row": "Row_1xqhqxf",
+        "columns": null
+      },
+      "id": "Field_1r5q07m"
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.28.0"
+  },
+  "schemaVersion": 16,
+  "id": "p1-06u5rjm",
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+      <zeebe:userTaskForm id="UserTaskForm_16s419f">{
+  "components": [
+    {
+      "text": "# __*Infosys Ticket Routing System*__",
+      "type": "text",
+      "layout": {
+        "row": "Row_0t0uoa1",
+        "columns": 16
+      },
+      "id": "Field_1qeg3k4"
+    },
+    {
+      "height": 1,
+      "type": "spacer",
+      "layout": {
+        "row": "Row_1shhe6g",
+        "columns": null
+      },
+      "id": "Field_0nddfvy"
+    },
+    {
+      "label": "",
+      "components": [
+        {
+          "text": "### __UserDetails__",
+          "type": "text",
+          "layout": {
+            "row": "Row_0hhwt4i",
+            "columns": null
+          },
+          "id": "Field_0b7135y"
+        },
+        {
+          "label": "Full Name",
+          "type": "textfield",
+          "id": "Textfield_1",
+          "validate": {
+            "minLength": 2,
+            "maxLength": 50,
+            "required": true
+          },
+          "key": "fullName",
+          "description": "Enter your full name",
+          "layout": {
+            "row": "Row_00x53rn",
+            "columns": 6
+          }
+        },
+        {
+          "label": "Email",
+          "type": "textfield",
+          "id": "Textfield_2",
+          "validate": {
+            "required": true,
+            "validationType": "email"
+          },
+          "key": "emailAddress",
+          "description": "Enter your email",
+          "layout": {
+            "row": "Row_00x53rn",
+            "columns": 6
+          }
+        },
+        {
+          "label": "Phone Number",
+          "type": "textfield",
+          "id": "Textfield_3",
+          "appearance": {
+            "prefixAdorner": "+"
+          },
+          "validate": {
+            "minLength": 10,
+            "maxLength": 10,
+            "required": true
+          },
+          "key": "phoneNumber",
+          "description": "Enter your phone number",
+          "layout": {
+            "row": "Row_00x53rn",
+            "columns": null
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "row_0",
+        "columns": null
+      },
+      "id": "Field_0puc5ml"
+    },
+    {
+      "label": "",
+      "components": [
+        {
+          "text": "### __Issue Details__",
+          "type": "text",
+          "id": "Subheading_4",
+          "layout": {
+            "row": "Row_090apc8",
+            "columns": 12
+          }
+        },
+        {
+          "label": "Description of the Issue",
+          "type": "textarea",
+          "id": "Textarea_5",
+          "validate": {
+            "minLength": 10,
+            "maxLength": 500,
+            "required": true
+          },
+          "key": "issueDescription",
+          "description": "Describe the issue in detail",
+          "layout": {
+            "row": "Row_1vrt4i5",
+            "columns": null
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "row_2",
+        "columns": null
+      },
+      "id": "Field_0o1ze4l"
+    },
+    {
+      "label": "Reset",
+      "action": "reset",
+      "type": "button",
+      "id": "Button_8",
+      "layout": {
+        "row": "row_4",
+        "columns": 3
+      }
+    }
+  ],
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17,
+  "id": "Form_0y1kpys",
+  "generated": true,
+  "type": "default"
+}</zeebe:userTaskForm>
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="StartEvent_1" name="start">
+      <bpmn:outgoing>Flow_05a0udv</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_1jho06z" name="Predict the Relevent Department" zeebe:modelerTemplate="io.camunda.connectors.AzureOpenAI.outbound.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;16&#39; height=&#39;16&#39; fill=&#39;none&#39; viewBox=&#39;0 0 513 512&#39;%3E%3Cg clip-path=&#39;url(%23a)&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M.25 76.8v358.4c0 42.411 34.39 76.8 76.8 76.8h358.4c42.411 0 76.8-34.389 76.8-76.8V76.8c0-42.41-34.389-76.8-76.8-76.8H77.05C34.64 0 .25 34.39.25 76.8ZM307.45 0v102.4c0 113.095 91.705 204.8 204.8 204.8h-102.4c-113.095 0-204.772 91.648-204.8 204.743V409.6c0-113.095-91.705-204.8-204.8-204.8h102.4c113.095 0 204.8-91.705 204.8-204.8Z&#39;/%3E%3C/g%3E%3Cdefs%3E%3CradialGradient id=&#39;b&#39; cx=&#39;0&#39; cy=&#39;0&#39; r=&#39;1&#39; gradientTransform=&#39;rotate(45 -176.261 403.94) scale(321.165 437.107)&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop stop-color=&#39;%2383B9F9&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%230078D4&#39;/%3E%3C/radialGradient%3E%3CclipPath id=&#39;a&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="apiKey" target="authentication.type" />
+          <zeebe:input source="headers" target="authentication.apiKeyLocation" />
+          <zeebe:input source="api-key" target="authentication.name" />
+          <zeebe:input source="A025nIG2uQWVTazaccOwVUExHppQCpzg3kdialLd0rSYpVmIuEYRJQQJ99BAACfhMk5XJ3w3AAAAACOGQQvz" target="authentication.value" />
+          <zeebe:input source="chatCompletion" target="operation" />
+          <zeebe:input source="tomj-m5eyak0m-swedencentral" target="chatCompletion_resourceName" />
+          <zeebe:input source="gpt-4o-mini" target="chatCompletion_deploymentId" />
+          <zeebe:input source="2024-02-01" target="chatCompletion_apiVersion" />
+          <zeebe:input source="user" target="chatCompletion_messageRole" />
+          <zeebe:input source="=if is defined(feedback) then feedback else issueDescription" target="chatCompletion_messageContent" />
+          <zeebe:input source="=[&#10;    { &#10;        &#34;role&#34;: &#34;system&#34;, &#10;        &#34;content&#34;: &#34;You are a routing classifier.&#34; &#10;    }, {&#10;        &#34;role&#34;: &#34;user&#34;, &#10;        &#34;content&#34;: &#34;Route messages to these departments: &#39;CCD&#39;, &#39;HR&#39;, &#39;CAG&#39;, &#39;ISG&#39;, &#39;FFD&#39;, &#39;OTHER&#39;. &#39;OTHER&#39; is the last resort try hard to match it to &#39;CCD&#39;, &#39;HR&#39;, &#39;CAG&#39;, &#39;ISG&#39;, &#39;FFD&#39; first. CCD means Computers and Communication Department any issue related to laptops, software, installations,spare parts.HR means Human Resources any issue related to OfferLetter,salarypackage,Promotion,Progression,malpractice in exam,harresement on employees,CAG means Corporate Accounting Group any issue related to salarycredit,claims.FFD means Facilities &#38; Food Court any issue related to food, facilities,food quality, food court.ISG - Information Security Group any issue related to information security,phishing,unauthorized data transfer,unauthorized uploads.Analyze properly and give me correct output with 100% Accuracy. Your response must only contain one of the existing department names.&#34;&#10;    }, { &#10;        &#34;role&#34;: &#34;assistant&#34;, &#10;        &#34;content&#34;: &#34;Understood. My responses will only contain the importance and department name separated by a space.&#34; &#10;    }&#10;]" target="chatCompletion_messages" />
+          <zeebe:input source="1" target="chatCompletion_temperature" />
+          <zeebe:input source="1" target="chatCompletion_n" />
+          <zeebe:input source="False" target="chatCompletion_stream" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://&#34; + chatCompletion_resourceName + &#34;.openai.azure.com/openai/deployments/&#34; + chatCompletion_deploymentId + &#34;/chat/completions?api-version=&#34; + chatCompletion_apiVersion" target="url" />
+          <zeebe:input source="=context(get entries({&#34;messages&#34;: if chatCompletion_messages = null then [{&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}] else append(chatCompletion_messages, {&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}), &#34;contentPart&#34;: if chatCompletion_contentPart = null then null else chatCompletion_contentPart, &#34;enhancements&#34;: if chatCompletion_enhancements = null then null else chatCompletion_enhancements, &#34;dataSources&#34;: if chatCompletion_dataSources = null then null else chatCompletion_dataSources, &#34;temperature&#34;: if chatCompletion_temperature = null then null else number(chatCompletion_temperature), &#34;n&#34;: if chatCompletion_n = null then null else decimal(number(chatCompletion_n), 0), &#34;stream&#34;: chatCompletion_stream = &#34;True&#34;, &#34;stop&#34;: if chatCompletion_stop = null then null else chatCompletion_stop, &#34;max_tokens&#34;: if chatCompletion_maxTokens = null then null else decimal(number(chatCompletion_maxTokens), 0), &#34;presence_penalty&#34;: if chatCompletion_presencePenalty = null then null else number(chatCompletion_presencePenalty), &#34;frequency_penalty&#34;: if chatCompletion_frequencyPenalty = null then null else number(chatCompletion_frequencyPenalty), &#34;logit_bias&#34;: if chatCompletion_logitBias = null then null else chatCompletion_logitBias, &#34;user&#34;: if chatCompletion_user = null then null else chatCompletion_user, &#34;tools&#34;: if chatCompletion_tools = null then null else chatCompletion_tools})[item.value != null])" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={route:string join(body.choices.message.content)}" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0b4wxxq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vzgim1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0uxxpx7">
+      <bpmn:incoming>Flow_0652izc</bpmn:incoming>
+      <bpmn:incoming>Flow_0p87ouu</bpmn:incoming>
+      <bpmn:outgoing>Flow_0b4wxxq</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_1k4fl28">
+      <bpmn:incoming>Flow_1vzgim1</bpmn:incoming>
+      <bpmn:incoming>Flow_0vd9y0l</bpmn:incoming>
+      <bpmn:outgoing>Flow_1fo4whc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0vi6gsy" name="Route to which Department?" default="Flow_0y86rz2">
+      <bpmn:incoming>Flow_1fo4whc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wmnln4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0ad8sfk</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1wqmf37</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0mnfeli</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1teejah</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0y86rz2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_0im9q5t">
+      <bpmn:incoming>Flow_1og4tl1</bpmn:incoming>
+      <bpmn:incoming>Flow_0qa6s70</bpmn:incoming>
+      <bpmn:incoming>Flow_0remh6x</bpmn:incoming>
+      <bpmn:incoming>Flow_0fxfflb</bpmn:incoming>
+      <bpmn:incoming>Flow_1mw4rhc</bpmn:incoming>
+      <bpmn:incoming>Flow_1stkwh8</bpmn:incoming>
+      <bpmn:outgoing>Flow_150popc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_01u57z9" name="Response">
+      <bpmn:incoming>Flow_150popc</bpmn:incoming>
+      <bpmn:outgoing>Flow_07pnv2s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1t91cwb</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0jdmd1o</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Event_1fi0xa2" name="Ticket Resolved">
+      <bpmn:incoming>Flow_0gtdkzd</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateCatchEvent id="Event_1b0mdgo" name="Retry with Feedback">
+      <bpmn:outgoing>Flow_0652izc</bpmn:outgoing>
+      <bpmn:linkEventDefinition id="LinkEventDefinition_053q545" name="retry_with_feedback" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="Event_0lajplg" name="Retry with different team">
+      <bpmn:outgoing>Flow_0vd9y0l</bpmn:outgoing>
+      <bpmn:linkEventDefinition id="LinkEventDefinition_0ey04gi" name="route_to_different_team" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateThrowEvent id="Event_097ebyq" name="Retry with Feedback">
+      <bpmn:incoming>Flow_1t91cwb</bpmn:incoming>
+      <bpmn:linkEventDefinition id="LinkEventDefinition_0cri5ql" name="retry_with_feedback" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateThrowEvent id="Event_03xtcc3" name="Retry with Different Team">
+      <bpmn:incoming>Flow_0jdmd1o</bpmn:incoming>
+      <bpmn:linkEventDefinition id="LinkEventDefinition_0344pdy" name="route_to_different_team" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:userTask id="Activity_0s6qbov" name="Ticket assigned to support">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_16353sk" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0y86rz2</bpmn:incoming>
+      <bpmn:outgoing>Flow_1mw4rhc</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_00kadal" name="Ticket assigned to CAG Department">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_0qf6gf3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1teejah</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fxfflb</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0s000xe" name="Ticket assigned to FFC Department">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_1ulj9hi" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0mnfeli</bpmn:incoming>
+      <bpmn:outgoing>Flow_0remh6x</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0vrejmx" name="Ticket assigned to HR Department">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_3b6ocg3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wqmf37</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qa6s70</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_13f8b1l" name="Ticket assigned to ISG Department">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_29csdoc" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ad8sfk</bpmn:incoming>
+      <bpmn:outgoing>Flow_1og4tl1</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0hz9pjn" name="Submit a Ticket">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_16s419f" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_05a0udv</bpmn:incoming>
+      <bpmn:outgoing>Flow_0m522cw</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_05a0udv" sourceRef="StartEvent_1" targetRef="Activity_0hz9pjn" />
+    <bpmn:sequenceFlow id="Flow_0b4wxxq" sourceRef="Gateway_0uxxpx7" targetRef="Activity_1jho06z" />
+    <bpmn:sequenceFlow id="Flow_1vzgim1" sourceRef="Activity_1jho06z" targetRef="Gateway_1k4fl28" />
+    <bpmn:sequenceFlow id="Flow_0652izc" sourceRef="Event_1b0mdgo" targetRef="Gateway_0uxxpx7" />
+    <bpmn:sequenceFlow id="Flow_0vd9y0l" sourceRef="Event_0lajplg" targetRef="Gateway_1k4fl28" />
+    <bpmn:sequenceFlow id="Flow_1fo4whc" sourceRef="Gateway_1k4fl28" targetRef="Gateway_0vi6gsy" />
+    <bpmn:sequenceFlow id="Flow_0wmnln4" name="CCD" sourceRef="Gateway_0vi6gsy" targetRef="Activity_08p6ho1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "CCD", "i")</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0ad8sfk" name="ISG" sourceRef="Gateway_0vi6gsy" targetRef="Activity_13f8b1l">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "ISG", "i")</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1wqmf37" name="HR" sourceRef="Gateway_0vi6gsy" targetRef="Activity_0vrejmx">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "HR", "i")</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0mnfeli" name="FFD" sourceRef="Gateway_0vi6gsy" targetRef="Activity_0s000xe">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "FFD", "i")</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1teejah" name="CAG" sourceRef="Gateway_0vi6gsy" targetRef="Activity_00kadal">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "CAG", "i")</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0y86rz2" name="Others" sourceRef="Gateway_0vi6gsy" targetRef="Activity_0s6qbov" />
+    <bpmn:sequenceFlow id="Flow_1og4tl1" sourceRef="Activity_13f8b1l" targetRef="Gateway_0im9q5t" />
+    <bpmn:sequenceFlow id="Flow_0qa6s70" sourceRef="Activity_0vrejmx" targetRef="Gateway_0im9q5t" />
+    <bpmn:sequenceFlow id="Flow_0remh6x" sourceRef="Activity_0s000xe" targetRef="Gateway_0im9q5t" />
+    <bpmn:sequenceFlow id="Flow_0fxfflb" sourceRef="Activity_00kadal" targetRef="Gateway_0im9q5t" />
+    <bpmn:sequenceFlow id="Flow_1mw4rhc" sourceRef="Activity_0s6qbov" targetRef="Gateway_0im9q5t" />
+    <bpmn:sequenceFlow id="Flow_150popc" sourceRef="Gateway_0im9q5t" targetRef="Gateway_01u57z9" />
+    <bpmn:sequenceFlow id="Flow_07pnv2s" name="resolved" sourceRef="Gateway_01u57z9" targetRef="Activity_0fq2z9o">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=subroute = "resolved" or route = "resolved"
+</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1t91cwb" name="retry with feedback" sourceRef="Gateway_01u57z9" targetRef="Event_097ebyq">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=route = "feedback" and ticket=false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0jdmd1o" name="route to different team" sourceRef="Gateway_01u57z9" targetRef="Event_03xtcc3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(route, "CCD|ISG|FFD|HR|CAG") and ticket=false </bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1stkwh8" sourceRef="Activity_08p6ho1" targetRef="Gateway_0im9q5t" />
+    <bpmn:subProcess id="Activity_08p6ho1" name="CCD Department">
+      <bpmn:incoming>Flow_0wmnln4</bpmn:incoming>
+      <bpmn:outgoing>Flow_1stkwh8</bpmn:outgoing>
+      <bpmn:serviceTask id="Activity_15h2q1e" name="Generate suggestions based on issue" zeebe:modelerTemplate="io.camunda.connectors.AzureOpenAI.outbound.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;16&#39; height=&#39;16&#39; fill=&#39;none&#39; viewBox=&#39;0 0 513 512&#39;%3E%3Cg clip-path=&#39;url(%23a)&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M.25 76.8v358.4c0 42.411 34.39 76.8 76.8 76.8h358.4c42.411 0 76.8-34.389 76.8-76.8V76.8c0-42.41-34.389-76.8-76.8-76.8H77.05C34.64 0 .25 34.39.25 76.8ZM307.45 0v102.4c0 113.095 91.705 204.8 204.8 204.8h-102.4c-113.095 0-204.772 91.648-204.8 204.743V409.6c0-113.095-91.705-204.8-204.8-204.8h102.4c113.095 0 204.8-91.705 204.8-204.8Z&#39;/%3E%3C/g%3E%3Cdefs%3E%3CradialGradient id=&#39;b&#39; cx=&#39;0&#39; cy=&#39;0&#39; r=&#39;1&#39; gradientTransform=&#39;rotate(45 -176.261 403.94) scale(321.165 437.107)&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop stop-color=&#39;%2383B9F9&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%230078D4&#39;/%3E%3C/radialGradient%3E%3CclipPath id=&#39;a&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="apiKey" target="authentication.type" />
+            <zeebe:input source="headers" target="authentication.apiKeyLocation" />
+            <zeebe:input source="api-key" target="authentication.name" />
+            <zeebe:input source="A025nIG2uQWVTazaccOwVUExHppQCpzg3kdialLd0rSYpVmIuEYRJQQJ99BAACfhMk5XJ3w3AAAAACOGQQvz" target="authentication.value" />
+            <zeebe:input source="chatCompletion" target="operation" />
+            <zeebe:input source="tomj-m5eyak0m-swedencentral" target="chatCompletion_resourceName" />
+            <zeebe:input source="gpt-4o-mini" target="chatCompletion_deploymentId" />
+            <zeebe:input source="2024-02-01" target="chatCompletion_apiVersion" />
+            <zeebe:input source="user" target="chatCompletion_messageRole" />
+            <zeebe:input source="=issueDescription" target="chatCompletion_messageContent" />
+            <zeebe:input source="=[&#10;    { &#10;        &#34;role&#34;: &#34;system&#34;, &#10;        &#34;content&#34;: &#34;You are a spare parts changing solution provider.&#34; &#10;    }, {&#10;        &#34;role&#34;: &#34;user&#34;, &#10;        &#34;content&#34;: &#34;generate the 3 or 4 possible solutions based on the issue description and give it like a points and that points contains solutions like how to a particular spare part based on issue&#34;&#10;    }, { &#10;        &#34;role&#34;: &#34;assistant&#34;, &#10;        &#34;content&#34;: &#34;Understood. My responses will contain the possible solutions separated by a space and every point is starting with numbers.&#34; &#10;    }&#10;]" target="chatCompletion_messages" />
+            <zeebe:input source="1" target="chatCompletion_temperature" />
+            <zeebe:input source="1" target="chatCompletion_n" />
+            <zeebe:input source="False" target="chatCompletion_stream" />
+            <zeebe:input source="post" target="method" />
+            <zeebe:input source="=&#34;https://&#34; + chatCompletion_resourceName + &#34;.openai.azure.com/openai/deployments/&#34; + chatCompletion_deploymentId + &#34;/chat/completions?api-version=&#34; + chatCompletion_apiVersion" target="url" />
+            <zeebe:input source="=context(get entries({&#34;messages&#34;: if chatCompletion_messages = null then [{&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}] else append(chatCompletion_messages, {&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}), &#34;contentPart&#34;: if chatCompletion_contentPart = null then null else chatCompletion_contentPart, &#34;enhancements&#34;: if chatCompletion_enhancements = null then null else chatCompletion_enhancements, &#34;dataSources&#34;: if chatCompletion_dataSources = null then null else chatCompletion_dataSources, &#34;temperature&#34;: if chatCompletion_temperature = null then null else number(chatCompletion_temperature), &#34;n&#34;: if chatCompletion_n = null then null else decimal(number(chatCompletion_n), 0), &#34;stream&#34;: chatCompletion_stream = &#34;True&#34;, &#34;stop&#34;: if chatCompletion_stop = null then null else chatCompletion_stop, &#34;max_tokens&#34;: if chatCompletion_maxTokens = null then null else decimal(number(chatCompletion_maxTokens), 0), &#34;presence_penalty&#34;: if chatCompletion_presencePenalty = null then null else number(chatCompletion_presencePenalty), &#34;frequency_penalty&#34;: if chatCompletion_frequencyPenalty = null then null else number(chatCompletion_frequencyPenalty), &#34;logit_bias&#34;: if chatCompletion_logitBias = null then null else chatCompletion_logitBias, &#34;user&#34;: if chatCompletion_user = null then null else chatCompletion_user, &#34;tools&#34;: if chatCompletion_tools = null then null else chatCompletion_tools})[item.value != null])" target="body" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultExpression" value="={solutions:string join(body.choices.message.content)}" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_02p9dvv</bpmn:incoming>
+        <bpmn:outgoing>Flow_1ihsibl</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_1ihsibl" sourceRef="Activity_15h2q1e" targetRef="Event_1p24yru" />
+      <bpmn:userTask id="Activity_0h7dk0b" name="Ticket assigned to spare parts section">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_04cidgg" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1kto72w</bpmn:incoming>
+        <bpmn:outgoing>Flow_0eeogig</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:serviceTask id="Activity_1mh2nlr" name="Generate suggestions based on issue" zeebe:modelerTemplate="io.camunda.connectors.AzureOpenAI.outbound.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;16&#39; height=&#39;16&#39; fill=&#39;none&#39; viewBox=&#39;0 0 513 512&#39;%3E%3Cg clip-path=&#39;url(%23a)&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M.25 76.8v358.4c0 42.411 34.39 76.8 76.8 76.8h358.4c42.411 0 76.8-34.389 76.8-76.8V76.8c0-42.41-34.389-76.8-76.8-76.8H77.05C34.64 0 .25 34.39.25 76.8ZM307.45 0v102.4c0 113.095 91.705 204.8 204.8 204.8h-102.4c-113.095 0-204.772 91.648-204.8 204.743V409.6c0-113.095-91.705-204.8-204.8-204.8h102.4c113.095 0 204.8-91.705 204.8-204.8Z&#39;/%3E%3C/g%3E%3Cdefs%3E%3CradialGradient id=&#39;b&#39; cx=&#39;0&#39; cy=&#39;0&#39; r=&#39;1&#39; gradientTransform=&#39;rotate(45 -176.261 403.94) scale(321.165 437.107)&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop stop-color=&#39;%2383B9F9&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%230078D4&#39;/%3E%3C/radialGradient%3E%3CclipPath id=&#39;a&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="apiKey" target="authentication.type" />
+            <zeebe:input source="headers" target="authentication.apiKeyLocation" />
+            <zeebe:input source="api-key" target="authentication.name" />
+            <zeebe:input source="A025nIG2uQWVTazaccOwVUExHppQCpzg3kdialLd0rSYpVmIuEYRJQQJ99BAACfhMk5XJ3w3AAAAACOGQQvz" target="authentication.value" />
+            <zeebe:input source="chatCompletion" target="operation" />
+            <zeebe:input source="tomj-m5eyak0m-swedencentral" target="chatCompletion_resourceName" />
+            <zeebe:input source="gpt-4o-mini" target="chatCompletion_deploymentId" />
+            <zeebe:input source="2024-02-01" target="chatCompletion_apiVersion" />
+            <zeebe:input source="user" target="chatCompletion_messageRole" />
+            <zeebe:input source="=issueDescription" target="chatCompletion_messageContent" />
+            <zeebe:input source="=[&#10;    { &#10;        &#34;role&#34;: &#34;system&#34;, &#10;        &#34;content&#34;: &#34;You are a  software installation solution provider.&#34; &#10;    }, {&#10;        &#34;role&#34;: &#34;user&#34;, &#10;        &#34;content&#34;: &#34;generate the 3 or 4 possible solutions based on the issue description and give it like a points and every software is present in company portal. company portal is a application which contains all softwares&#34;&#10;    }, { &#10;        &#34;role&#34;: &#34;assistant&#34;, &#10;        &#34;content&#34;: &#34;Understood. My responses will contain the possible solutions separated by a space and every point is starting with numbers.&#34; &#10;    }&#10;]" target="chatCompletion_messages" />
+            <zeebe:input source="1" target="chatCompletion_temperature" />
+            <zeebe:input source="1" target="chatCompletion_n" />
+            <zeebe:input source="False" target="chatCompletion_stream" />
+            <zeebe:input source="post" target="method" />
+            <zeebe:input source="=&#34;https://&#34; + chatCompletion_resourceName + &#34;.openai.azure.com/openai/deployments/&#34; + chatCompletion_deploymentId + &#34;/chat/completions?api-version=&#34; + chatCompletion_apiVersion" target="url" />
+            <zeebe:input source="=context(get entries({&#34;messages&#34;: if chatCompletion_messages = null then [{&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}] else append(chatCompletion_messages, {&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}), &#34;contentPart&#34;: if chatCompletion_contentPart = null then null else chatCompletion_contentPart, &#34;enhancements&#34;: if chatCompletion_enhancements = null then null else chatCompletion_enhancements, &#34;dataSources&#34;: if chatCompletion_dataSources = null then null else chatCompletion_dataSources, &#34;temperature&#34;: if chatCompletion_temperature = null then null else number(chatCompletion_temperature), &#34;n&#34;: if chatCompletion_n = null then null else decimal(number(chatCompletion_n), 0), &#34;stream&#34;: chatCompletion_stream = &#34;True&#34;, &#34;stop&#34;: if chatCompletion_stop = null then null else chatCompletion_stop, &#34;max_tokens&#34;: if chatCompletion_maxTokens = null then null else decimal(number(chatCompletion_maxTokens), 0), &#34;presence_penalty&#34;: if chatCompletion_presencePenalty = null then null else number(chatCompletion_presencePenalty), &#34;frequency_penalty&#34;: if chatCompletion_frequencyPenalty = null then null else number(chatCompletion_frequencyPenalty), &#34;logit_bias&#34;: if chatCompletion_logitBias = null then null else chatCompletion_logitBias, &#34;user&#34;: if chatCompletion_user = null then null else chatCompletion_user, &#34;tools&#34;: if chatCompletion_tools = null then null else chatCompletion_tools})[item.value != null])" target="body" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultExpression" value="={solutions:string join(body.choices.message.content)}" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1cnazwy</bpmn:incoming>
+        <bpmn:outgoing>Flow_1pmvg8q</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:userTask id="Activity_002ntjp" name="Ticket assigned to software installations section">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_2ka3cjc" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1rpsv29</bpmn:incoming>
+        <bpmn:outgoing>Flow_1qiwk5o</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="Gateway_0jo9wpz">
+        <bpmn:incoming>Flow_0n91f2n</bpmn:incoming>
+        <bpmn:incoming>Flow_07ycw13</bpmn:incoming>
+        <bpmn:outgoing>Flow_02p9dvv</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1cnazwy</bpmn:outgoing>
+        <bpmn:outgoing>Flow_03pxomd</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_02p9dvv" name="spare parts" sourceRef="Gateway_0jo9wpz" targetRef="Activity_15h2q1e">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(subroute, "spare parts", "i")</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_1cnazwy" name="software installations" sourceRef="Gateway_0jo9wpz" targetRef="Activity_1mh2nlr">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(subroute, "software installations", "i")</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:serviceTask id="Activity_03eqn96" name="Predict the Relevent Sub Category" zeebe:modelerTemplate="io.camunda.connectors.AzureOpenAI.outbound.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;16&#39; height=&#39;16&#39; fill=&#39;none&#39; viewBox=&#39;0 0 513 512&#39;%3E%3Cg clip-path=&#39;url(%23a)&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M.25 76.8v358.4c0 42.411 34.39 76.8 76.8 76.8h358.4c42.411 0 76.8-34.389 76.8-76.8V76.8c0-42.41-34.389-76.8-76.8-76.8H77.05C34.64 0 .25 34.39.25 76.8ZM307.45 0v102.4c0 113.095 91.705 204.8 204.8 204.8h-102.4c-113.095 0-204.772 91.648-204.8 204.743V409.6c0-113.095-91.705-204.8-204.8-204.8h102.4c113.095 0 204.8-91.705 204.8-204.8Z&#39;/%3E%3C/g%3E%3Cdefs%3E%3CradialGradient id=&#39;b&#39; cx=&#39;0&#39; cy=&#39;0&#39; r=&#39;1&#39; gradientTransform=&#39;rotate(45 -176.261 403.94) scale(321.165 437.107)&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop stop-color=&#39;%2383B9F9&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%230078D4&#39;/%3E%3C/radialGradient%3E%3CclipPath id=&#39;a&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="apiKey" target="authentication.type" />
+            <zeebe:input source="headers" target="authentication.apiKeyLocation" />
+            <zeebe:input source="api-key" target="authentication.name" />
+            <zeebe:input source="A025nIG2uQWVTazaccOwVUExHppQCpzg3kdialLd0rSYpVmIuEYRJQQJ99BAACfhMk5XJ3w3AAAAACOGQQvz" target="authentication.value" />
+            <zeebe:input source="chatCompletion" target="operation" />
+            <zeebe:input source="tomj-m5eyak0m-swedencentral" target="chatCompletion_resourceName" />
+            <zeebe:input source="gpt-4o-mini" target="chatCompletion_deploymentId" />
+            <zeebe:input source="2024-02-01" target="chatCompletion_apiVersion" />
+            <zeebe:input source="user" target="chatCompletion_messageRole" />
+            <zeebe:input source="=issueDescription" target="chatCompletion_messageContent" />
+            <zeebe:input source="=[&#10;    { &#10;        &#34;role&#34;: &#34;system&#34;, &#10;        &#34;content&#34;: &#34;You are a routing classifier.&#34; &#10;    }, {&#10;        &#34;role&#34;: &#34;user&#34;, &#10;        &#34;content&#34;: &#34;laptop, software installations, spare parts.Analyze properly and give me correct output with 100% Accuracy. Your response must only contain one of the existing sub category names like laptop, software installations, spare parts.&#34;&#10;    }, { &#10;        &#34;role&#34;: &#34;assistant&#34;, &#10;        &#34;content&#34;: &#34;Understood. My responses will only contain the importance and sub category name separated by a space.&#34; &#10;    }&#10;]" target="chatCompletion_messages" />
+            <zeebe:input source="1" target="chatCompletion_temperature" />
+            <zeebe:input source="1" target="chatCompletion_n" />
+            <zeebe:input source="False" target="chatCompletion_stream" />
+            <zeebe:input source="post" target="method" />
+            <zeebe:input source="=&#34;https://&#34; + chatCompletion_resourceName + &#34;.openai.azure.com/openai/deployments/&#34; + chatCompletion_deploymentId + &#34;/chat/completions?api-version=&#34; + chatCompletion_apiVersion" target="url" />
+            <zeebe:input source="=context(get entries({&#34;messages&#34;: if chatCompletion_messages = null then [{&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}] else append(chatCompletion_messages, {&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}), &#34;contentPart&#34;: if chatCompletion_contentPart = null then null else chatCompletion_contentPart, &#34;enhancements&#34;: if chatCompletion_enhancements = null then null else chatCompletion_enhancements, &#34;dataSources&#34;: if chatCompletion_dataSources = null then null else chatCompletion_dataSources, &#34;temperature&#34;: if chatCompletion_temperature = null then null else number(chatCompletion_temperature), &#34;n&#34;: if chatCompletion_n = null then null else decimal(number(chatCompletion_n), 0), &#34;stream&#34;: chatCompletion_stream = &#34;True&#34;, &#34;stop&#34;: if chatCompletion_stop = null then null else chatCompletion_stop, &#34;max_tokens&#34;: if chatCompletion_maxTokens = null then null else decimal(number(chatCompletion_maxTokens), 0), &#34;presence_penalty&#34;: if chatCompletion_presencePenalty = null then null else number(chatCompletion_presencePenalty), &#34;frequency_penalty&#34;: if chatCompletion_frequencyPenalty = null then null else number(chatCompletion_frequencyPenalty), &#34;logit_bias&#34;: if chatCompletion_logitBias = null then null else chatCompletion_logitBias, &#34;user&#34;: if chatCompletion_user = null then null else chatCompletion_user, &#34;tools&#34;: if chatCompletion_tools = null then null else chatCompletion_tools})[item.value != null])" target="body" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultExpression" value="={subroute:string join(body.choices.message.content)}" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1kf01eq</bpmn:incoming>
+        <bpmn:outgoing>Flow_0n91f2n</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_0n91f2n" sourceRef="Activity_03eqn96" targetRef="Gateway_0jo9wpz" />
+      <bpmn:startEvent id="Event_09k4lja">
+        <bpmn:outgoing>Flow_1kf01eq</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:sequenceFlow id="Flow_1kf01eq" sourceRef="Event_09k4lja" targetRef="Activity_03eqn96" />
+      <bpmn:sequenceFlow id="Flow_03pxomd" name="laptop" sourceRef="Gateway_0jo9wpz" targetRef="Activity_01ax83e">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=matches(subroute, "Laptop", "i")</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:serviceTask id="Activity_01ax83e" name="Generate suggestions based on issue" zeebe:modelerTemplate="io.camunda.connectors.AzureOpenAI.outbound.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;16&#39; height=&#39;16&#39; fill=&#39;none&#39; viewBox=&#39;0 0 513 512&#39;%3E%3Cg clip-path=&#39;url(%23a)&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M.25 76.8v358.4c0 42.411 34.39 76.8 76.8 76.8h358.4c42.411 0 76.8-34.389 76.8-76.8V76.8c0-42.41-34.389-76.8-76.8-76.8H77.05C34.64 0 .25 34.39.25 76.8ZM307.45 0v102.4c0 113.095 91.705 204.8 204.8 204.8h-102.4c-113.095 0-204.772 91.648-204.8 204.743V409.6c0-113.095-91.705-204.8-204.8-204.8h102.4c113.095 0 204.8-91.705 204.8-204.8Z&#39;/%3E%3C/g%3E%3Cdefs%3E%3CradialGradient id=&#39;b&#39; cx=&#39;0&#39; cy=&#39;0&#39; r=&#39;1&#39; gradientTransform=&#39;rotate(45 -176.261 403.94) scale(321.165 437.107)&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop stop-color=&#39;%2383B9F9&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%230078D4&#39;/%3E%3C/radialGradient%3E%3CclipPath id=&#39;a&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="apiKey" target="authentication.type" />
+            <zeebe:input source="headers" target="authentication.apiKeyLocation" />
+            <zeebe:input source="api-key" target="authentication.name" />
+            <zeebe:input source="A025nIG2uQWVTazaccOwVUExHppQCpzg3kdialLd0rSYpVmIuEYRJQQJ99BAACfhMk5XJ3w3AAAAACOGQQvz" target="authentication.value" />
+            <zeebe:input source="chatCompletion" target="operation" />
+            <zeebe:input source="tomj-m5eyak0m-swedencentral" target="chatCompletion_resourceName" />
+            <zeebe:input source="gpt-4o-mini" target="chatCompletion_deploymentId" />
+            <zeebe:input source="2024-02-01" target="chatCompletion_apiVersion" />
+            <zeebe:input source="user" target="chatCompletion_messageRole" />
+            <zeebe:input source="=issueDescription" target="chatCompletion_messageContent" />
+            <zeebe:input source="=[&#10;    { &#10;        &#34;role&#34;: &#34;system&#34;, &#10;        &#34;content&#34;: &#34;You are a Laptop solution provider.&#34; &#10;    }, {&#10;        &#34;role&#34;: &#34;user&#34;, &#10;        &#34;content&#34;: &#34;generate the 3 or 4 possible solutions based on the issue description and give it like a points&#34;&#10;    }, { &#10;        &#34;role&#34;: &#34;assistant&#34;, &#10;        &#34;content&#34;: &#34;Understood. My responses will contain the possible solutions separated by a space and every point is starting with numbers.&#34; &#10;    }&#10;]" target="chatCompletion_messages" />
+            <zeebe:input source="1" target="chatCompletion_temperature" />
+            <zeebe:input source="1" target="chatCompletion_n" />
+            <zeebe:input source="False" target="chatCompletion_stream" />
+            <zeebe:input source="post" target="method" />
+            <zeebe:input source="=&#34;https://&#34; + chatCompletion_resourceName + &#34;.openai.azure.com/openai/deployments/&#34; + chatCompletion_deploymentId + &#34;/chat/completions?api-version=&#34; + chatCompletion_apiVersion" target="url" />
+            <zeebe:input source="=context(get entries({&#34;messages&#34;: if chatCompletion_messages = null then [{&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}] else append(chatCompletion_messages, {&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}), &#34;contentPart&#34;: if chatCompletion_contentPart = null then null else chatCompletion_contentPart, &#34;enhancements&#34;: if chatCompletion_enhancements = null then null else chatCompletion_enhancements, &#34;dataSources&#34;: if chatCompletion_dataSources = null then null else chatCompletion_dataSources, &#34;temperature&#34;: if chatCompletion_temperature = null then null else number(chatCompletion_temperature), &#34;n&#34;: if chatCompletion_n = null then null else decimal(number(chatCompletion_n), 0), &#34;stream&#34;: chatCompletion_stream = &#34;True&#34;, &#34;stop&#34;: if chatCompletion_stop = null then null else chatCompletion_stop, &#34;max_tokens&#34;: if chatCompletion_maxTokens = null then null else decimal(number(chatCompletion_maxTokens), 0), &#34;presence_penalty&#34;: if chatCompletion_presencePenalty = null then null else number(chatCompletion_presencePenalty), &#34;frequency_penalty&#34;: if chatCompletion_frequencyPenalty = null then null else number(chatCompletion_frequencyPenalty), &#34;logit_bias&#34;: if chatCompletion_logitBias = null then null else chatCompletion_logitBias, &#34;user&#34;: if chatCompletion_user = null then null else chatCompletion_user, &#34;tools&#34;: if chatCompletion_tools = null then null else chatCompletion_tools})[item.value != null])" target="body" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="resultExpression" value="={solutions:string join(body.choices.message.content)}" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_03pxomd</bpmn:incoming>
+        <bpmn:outgoing>Flow_04mai4p</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_04mai4p" sourceRef="Activity_01ax83e" targetRef="Event_03vod3w" />
+      <bpmn:userTask id="Activity_1906j2d" name="Ticket assigned to Laptop Section">
+        <bpmn:extensionElements>
+          <zeebe:formDefinition formKey="camunda-forms:bpmn:UserTaskForm_3d3qbf4" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1g7bo58</bpmn:incoming>
+        <bpmn:outgoing>Flow_0w4efni</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="Gateway_1ijkqmp">
+        <bpmn:incoming>Flow_0w4efni</bpmn:incoming>
+        <bpmn:incoming>Flow_1qiwk5o</bpmn:incoming>
+        <bpmn:incoming>Flow_0eeogig</bpmn:incoming>
+        <bpmn:outgoing>Flow_1a2bndg</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1s0z0q9</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0jeue4o</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0w4efni" sourceRef="Activity_1906j2d" targetRef="Gateway_1ijkqmp" />
+      <bpmn:sequenceFlow id="Flow_1qiwk5o" sourceRef="Activity_002ntjp" targetRef="Gateway_1ijkqmp" />
+      <bpmn:sequenceFlow id="Flow_0eeogig" sourceRef="Activity_0h7dk0b" targetRef="Gateway_1ijkqmp" />
+      <bpmn:endEvent id="Event_00gh6do" name="Resolved">
+        <bpmn:incoming>Flow_1a2bndg</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_1a2bndg" sourceRef="Gateway_1ijkqmp" targetRef="Event_00gh6do">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=ticket=true and subroute = "resolved"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_1s0z0q9" sourceRef="Gateway_1ijkqmp" targetRef="Event_0or7zdw">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=ticket=true and (subroute = "laptop" or subroute = "software installations" or subroute="spare parts")</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:intermediateThrowEvent id="Event_0or7zdw" name="Retry with internal department">
+        <bpmn:incoming>Flow_1s0z0q9</bpmn:incoming>
+        <bpmn:linkEventDefinition id="LinkEventDefinition_1verotm" name="retry_internal" />
+      </bpmn:intermediateThrowEvent>
+      <bpmn:sequenceFlow id="Flow_07ycw13" sourceRef="Event_06t3jg2" targetRef="Gateway_0jo9wpz" />
+      <bpmn:intermediateCatchEvent id="Event_06t3jg2" name="Retry with internal department">
+        <bpmn:outgoing>Flow_07ycw13</bpmn:outgoing>
+        <bpmn:linkEventDefinition id="LinkEventDefinition_1p4xreu" name="retry_internal" />
+      </bpmn:intermediateCatchEvent>
+      <bpmn:endEvent id="Event_00unpri" name="Navigate to Other Departments">
+        <bpmn:incoming>Flow_0jeue4o</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="Flow_0jeue4o" sourceRef="Gateway_1ijkqmp" targetRef="Event_00unpri">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=ticket=false and (route = "feedback" or route="HR" or route="CAG" or route="FFD" or route="ISG")</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_1g7bo58" sourceRef="Activity_0af46ev" targetRef="Activity_1906j2d" />
+      <bpmn:serviceTask id="Activity_0af46ev" name="Sending Ticket assignment mail" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="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" target="apiKey" />
+            <zeebe:input source="Infosys Ticket Routing System" target="from.name" />
+            <zeebe:input source="choppavarapucharanteja469@gmail.com" target="from.email" />
+            <zeebe:input source="=fullName" target="to.name" />
+            <zeebe:input source="=emailAddress" target="to.email" />
+            <zeebe:input source="byTemplate" target="unMappedFieldNotUseInModel.mailType" />
+            <zeebe:input source="d-46bbd6ad9bde481685b21029423ed429" target="template.id" />
+            <zeebe:input source="={&#10;  fullName: fullName,&#10;  route: route,&#10;  subroute: subroute,&#10;  issueDescription: issueDescription  &#10;}" target="template.data" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0zy3efb</bpmn:incoming>
+        <bpmn:outgoing>Flow_1g7bo58</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_055ne0m" name="Sending Ticket assignment mail" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="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" target="apiKey" />
+            <zeebe:input source="Infosys Ticket Routing System" target="from.name" />
+            <zeebe:input source="choppavarapucharanteja469@gmail.com" target="from.email" />
+            <zeebe:input source="=fullName" target="to.name" />
+            <zeebe:input source="=emailAddress" target="to.email" />
+            <zeebe:input source="byTemplate" target="unMappedFieldNotUseInModel.mailType" />
+            <zeebe:input source="d-46bbd6ad9bde481685b21029423ed429" target="template.id" />
+            <zeebe:input source="={&#10;  fullName: fullName,&#10;  route: route,&#10;  subroute: subroute,&#10;  issueDescription: issueDescription  &#10;}" target="template.data" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_183hxao</bpmn:incoming>
+        <bpmn:outgoing>Flow_1rpsv29</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_0l1hl53" name="Sending Ticket assignment mail" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="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" target="apiKey" />
+            <zeebe:input source="Infosys Ticket Routing System" target="from.name" />
+            <zeebe:input source="choppavarapucharanteja469@gmail.com" target="from.email" />
+            <zeebe:input source="=fullName" target="to.name" />
+            <zeebe:input source="=emailAddress" target="to.email" />
+            <zeebe:input source="byTemplate" target="unMappedFieldNotUseInModel.mailType" />
+            <zeebe:input source="d-46bbd6ad9bde481685b21029423ed429" target="template.id" />
+            <zeebe:input source="={&#10;  fullName: fullName,&#10;  route: route,&#10;  subroute: subroute,&#10;  issueDescription: issueDescription  &#10;}" target="template.data" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1apunjw</bpmn:incoming>
+        <bpmn:outgoing>Flow_1kto72w</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_1kto72w" sourceRef="Activity_0l1hl53" targetRef="Activity_0h7dk0b" />
+      <bpmn:sequenceFlow id="Flow_1pmvg8q" sourceRef="Activity_1mh2nlr" targetRef="Event_1te4jvy" />
+      <bpmn:sequenceFlow id="Flow_1rpsv29" sourceRef="Activity_055ne0m" targetRef="Activity_002ntjp" />
+      <bpmn:sequenceFlow id="Flow_0zy3efb" sourceRef="Event_03vod3w" targetRef="Activity_0af46ev" />
+      <bpmn:intermediateCatchEvent id="Event_03vod3w" name="30 sec">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="=subroute" target="subcategory" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_04mai4p</bpmn:incoming>
+        <bpmn:outgoing>Flow_0zy3efb</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_1t5h7ub">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:intermediateCatchEvent id="Event_1te4jvy" name="30 sec">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="=subroute" target="subcategory" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1pmvg8q</bpmn:incoming>
+        <bpmn:outgoing>Flow_183hxao</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_1o3vlxz">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="Flow_183hxao" sourceRef="Event_1te4jvy" targetRef="Activity_055ne0m" />
+      <bpmn:intermediateCatchEvent id="Event_1p24yru" name="30 sec">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="=subroute" target="subcategory" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1ihsibl</bpmn:incoming>
+        <bpmn:outgoing>Flow_1apunjw</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_1c978as">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="Flow_1apunjw" sourceRef="Event_1p24yru" targetRef="Activity_0l1hl53" />
+    </bpmn:subProcess>
+    <bpmn:sequenceFlow id="Flow_0gtdkzd" sourceRef="Activity_0fq2z9o" targetRef="Event_1fi0xa2" />
+    <bpmn:serviceTask id="Activity_0fq2z9o" name="Sending Issue resolved mail" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="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" target="apiKey" />
+          <zeebe:input source="Infosys Ticket Routing System" target="from.name" />
+          <zeebe:input source="choppavarapucharanteja469@gmail.com" target="from.email" />
+          <zeebe:input source="=fullName" target="to.name" />
+          <zeebe:input source="=emailAddress" target="to.email" />
+          <zeebe:input source="byTemplate" target="unMappedFieldNotUseInModel.mailType" />
+          <zeebe:input source="d-f464310553644b06b443c14a367fe4cd" target="template.id" />
+          <zeebe:input source="={&#10;  fullName: fullName,&#10;  route: route,&#10;  subcategory: subcategory,&#10;  issueDescription: issueDescription,&#10;  feedback: feedback&#10;}" target="template.data" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_07pnv2s</bpmn:incoming>
+      <bpmn:outgoing>Flow_0gtdkzd</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1rnc1la" name="Send relevent email" zeebe:modelerTemplate="io.camunda.connectors.SendGrid.v2" zeebe:modelerTemplateVersion="3" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0id2hpdGUiLz4KICAgIDxwYXRoIGQ9Ik0wLjI4NTcwNiA1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMUgwLjI4NTcwNlY1LjQwODQ3WiIgZmlsbD0iIzk5RTFGNCIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSJ3aGl0ZSIvPgogICAgPHBhdGggZD0iTTUuNDM4MzcgMTAuNTYxMUwxMC41NjExIDEwLjU2MTZWMTUuNjg0NEg1LjQzODM3VjEwLjU2MTFaIiBmaWxsPSIjOTlFMUY0Ii8+CiAgICA8cGF0aCBkPSJNMC4yODU3MDYgMTUuNjg0Nkw1LjQzODM3IDE1LjY4NDRWMTUuNzE0M0gwLjI4NTcwNlYxNS42ODQ2Wk0wLjI4NTcwNiAxMC41NjE5SDUuNDM4MzdWMTUuNjg0NEwwLjI4NTcwNiAxNS42ODQ2VjEwLjU2MTlaIiBmaWxsPSIjMUE4MkUyIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAwLjI4NTcwNkgxMC41NjExVjUuNDA4NDdINS40MzgzN1YwLjI4NTcwNlpNMTAuNTYxNiA1LjQzODM3SDE1LjcxNDNWMTAuNTYxMUgxMC41NjE2VjUuNDM4MzdaIiBmaWxsPSIjMDBCM0UzIi8+CiAgICA8cGF0aCBkPSJNNS40MzgzNyAxMC41NjExTDEwLjU2MTEgMTAuNTYxNlY1LjQwODQ3SDUuNDM4MzdWMTAuNTYxMVoiIGZpbGw9IiMwMDlERDkiLz4KICAgIDxwYXRoIGQ9Ik0xMC41NjExIDAuMjg1NzA2SDE1LjcxNDNWNS40MDg0N0gxMC41NjExVjAuMjg1NzA2WiIgZmlsbD0iIzFBODJFMiIvPgogICAgPHBhdGggZD0iTTEwLjU2MTEgNS40MDg0N0gxNS43MTQzVjUuNDM4MzdIMTAuNTYxNkwxMC41NjExIDUuNDA4NDdaIiBmaWxsPSIjMUE4MkUyIi8+Cjwvc3ZnPg==">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:sendgrid:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="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" target="apiKey" />
+          <zeebe:input source="Infosys Ticket Routing System" target="from.name" />
+          <zeebe:input source="choppavarapucharanteja469@gmail.com" target="from.email" />
+          <zeebe:input source="=fullName" target="to.name" />
+          <zeebe:input source="=emailAddress" target="to.email" />
+          <zeebe:input source="byTemplate" target="unMappedFieldNotUseInModel.mailType" />
+          <zeebe:input source="d-af4b983ef4094e4e88abb96e0cf57437" target="template.id" />
+          <zeebe:input source="={&#10;  fullName: fullName,&#10;  emailAddress: emailAddress,&#10;  phoneNumber: phoneNumber,&#10;  issueDescription: issueDescription,&#10;  mailBody: mailBody&#10;}" target="template.data" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1f1t538</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p87ouu</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1ysnl4m" name="Generate email Body" zeebe:modelerTemplate="io.camunda.connectors.AzureOpenAI.outbound.v1" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;16&#39; height=&#39;16&#39; fill=&#39;none&#39; viewBox=&#39;0 0 513 512&#39;%3E%3Cg clip-path=&#39;url(%23a)&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3Cpath fill=&#39;url(%23b)&#39; d=&#39;M.25 76.8v358.4c0 42.411 34.39 76.8 76.8 76.8h358.4c42.411 0 76.8-34.389 76.8-76.8V76.8c0-42.41-34.389-76.8-76.8-76.8H77.05C34.64 0 .25 34.39.25 76.8ZM307.45 0v102.4c0 113.095 91.705 204.8 204.8 204.8h-102.4c-113.095 0-204.772 91.648-204.8 204.743V409.6c0-113.095-91.705-204.8-204.8-204.8h102.4c113.095 0 204.8-91.705 204.8-204.8Z&#39;/%3E%3C/g%3E%3Cdefs%3E%3CradialGradient id=&#39;b&#39; cx=&#39;0&#39; cy=&#39;0&#39; r=&#39;1&#39; gradientTransform=&#39;rotate(45 -176.261 403.94) scale(321.165 437.107)&#39; gradientUnits=&#39;userSpaceOnUse&#39;%3E%3Cstop stop-color=&#39;%2383B9F9&#39;/%3E%3Cstop offset=&#39;1&#39; stop-color=&#39;%230078D4&#39;/%3E%3C/radialGradient%3E%3CclipPath id=&#39;a&#39;%3E%3Crect width=&#39;512&#39; height=&#39;512&#39; x=&#39;.25&#39; fill=&#39;%23fff&#39; rx=&#39;76&#39;/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="apiKey" target="authentication.type" />
+          <zeebe:input source="headers" target="authentication.apiKeyLocation" />
+          <zeebe:input source="api-key" target="authentication.name" />
+          <zeebe:input source="A025nIG2uQWVTazaccOwVUExHppQCpzg3kdialLd0rSYpVmIuEYRJQQJ99BAACfhMk5XJ3w3AAAAACOGQQvz" target="authentication.value" />
+          <zeebe:input source="chatCompletion" target="operation" />
+          <zeebe:input source="tomj-m5eyak0m-swedencentral" target="chatCompletion_resourceName" />
+          <zeebe:input source="gpt-4o-mini" target="chatCompletion_deploymentId" />
+          <zeebe:input source="2024-02-01" target="chatCompletion_apiVersion" />
+          <zeebe:input source="user" target="chatCompletion_messageRole" />
+          <zeebe:input source="generate a mail body of 10 lines saying that your ticket is submitted and we will resolve the issue in 2-3 working days in a professional way. generate only body. do not generate thanks &#38; regards and any other parameters like Dear [Recipient&#39;s Name]." target="chatCompletion_messageContent" />
+          <zeebe:input source="1" target="chatCompletion_temperature" />
+          <zeebe:input source="1" target="chatCompletion_n" />
+          <zeebe:input source="False" target="chatCompletion_stream" />
+          <zeebe:input source="post" target="method" />
+          <zeebe:input source="=&#34;https://&#34; + chatCompletion_resourceName + &#34;.openai.azure.com/openai/deployments/&#34; + chatCompletion_deploymentId + &#34;/chat/completions?api-version=&#34; + chatCompletion_apiVersion" target="url" />
+          <zeebe:input source="=context(get entries({&#34;messages&#34;: if chatCompletion_messages = null then [{&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}] else append(chatCompletion_messages, {&#34;role&#34;: chatCompletion_messageRole, &#34;content&#34;: chatCompletion_messageContent}), &#34;contentPart&#34;: if chatCompletion_contentPart = null then null else chatCompletion_contentPart, &#34;enhancements&#34;: if chatCompletion_enhancements = null then null else chatCompletion_enhancements, &#34;dataSources&#34;: if chatCompletion_dataSources = null then null else chatCompletion_dataSources, &#34;temperature&#34;: if chatCompletion_temperature = null then null else number(chatCompletion_temperature), &#34;n&#34;: if chatCompletion_n = null then null else decimal(number(chatCompletion_n), 0), &#34;stream&#34;: chatCompletion_stream = &#34;True&#34;, &#34;stop&#34;: if chatCompletion_stop = null then null else chatCompletion_stop, &#34;max_tokens&#34;: if chatCompletion_maxTokens = null then null else decimal(number(chatCompletion_maxTokens), 0), &#34;presence_penalty&#34;: if chatCompletion_presencePenalty = null then null else number(chatCompletion_presencePenalty), &#34;frequency_penalty&#34;: if chatCompletion_frequencyPenalty = null then null else number(chatCompletion_frequencyPenalty), &#34;logit_bias&#34;: if chatCompletion_logitBias = null then null else chatCompletion_logitBias, &#34;user&#34;: if chatCompletion_user = null then null else chatCompletion_user, &#34;tools&#34;: if chatCompletion_tools = null then null else chatCompletion_tools})[item.value != null])" target="body" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="resultExpression" value="={mailBody:string join(body.choices.message.content)}" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0m522cw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1f1t538</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1f1t538" sourceRef="Activity_1ysnl4m" targetRef="Activity_1rnc1la" />
+    <bpmn:sequenceFlow id="Flow_0m522cw" sourceRef="Activity_0hz9pjn" targetRef="Activity_1ysnl4m" />
+    <bpmn:sequenceFlow id="Flow_0p87ouu" sourceRef="Activity_1rnc1la" targetRef="Gateway_0uxxpx7" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Infy_V1">
+      <bpmndi:BPMNShape id="BPMNShape_09zl393" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="161" y="295" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1eoxtdc_di" bpmnElement="Activity_1jho06z" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="792" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0uxxpx7_di" bpmnElement="Gateway_0uxxpx7" isMarkerVisible="true">
+        <dc:Bounds x="707" y="245" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1k4fl28_di" bpmnElement="Gateway_1k4fl28" isMarkerVisible="true">
+        <dc:Bounds x="927" y="245" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0vi6gsy_di" bpmnElement="Gateway_0vi6gsy" isMarkerVisible="true">
+        <dc:Bounds x="1017" y="245" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1005" y="208" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0im9q5t_di" bpmnElement="Gateway_0im9q5t" isMarkerVisible="true">
+        <dc:Bounds x="1395" y="245" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_01u57z9_di" bpmnElement="Gateway_01u57z9" isMarkerVisible="true">
+        <dc:Bounds x="1495" y="245" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1495" y="215" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1fi0xa2_di" bpmnElement="Event_1fi0xa2" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="1882" y="252" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1863" y="295" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03xtmzn_di" bpmnElement="Event_1b0mdgo" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <dc:Bounds x="574" y="394" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="568" y="437" width="50" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1uieybw_di" bpmnElement="Event_0lajplg" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="852" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="836" y="125" width="68" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1nhnhy2_di" bpmnElement="Event_097ebyq" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
+        <dc:Bounds x="1652" y="364" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1646" y="407" width="50" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_04400hl_di" bpmnElement="Event_03xtcc3" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="1652" y="474" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1634" y="517" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0e36i2d_di" bpmnElement="Activity_0s6qbov">
+        <dc:Bounds x="1180" y="792" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1sekz85_di" bpmnElement="Activity_00kadal">
+        <dc:Bounds x="1180" y="670" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ffk026_di" bpmnElement="Activity_0s000xe">
+        <dc:Bounds x="1180" y="562" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0z26g7o_di" bpmnElement="Activity_0vrejmx">
+        <dc:Bounds x="1180" y="452" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1o1r7hk_di" bpmnElement="Activity_13f8b1l">
+        <dc:Bounds x="1180" y="342" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0t6fd6r_di" bpmnElement="Activity_0hz9pjn">
+        <dc:Bounds x="230" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bbtpmr_di" bpmnElement="Activity_08p6ho1">
+        <dc:Bounds x="1180" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tthksx_di" bpmnElement="Activity_0fq2z9o" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="1670" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1y9oeka" bpmnElement="Activity_1rnc1la" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="530" y="230" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0qq6j1u" bpmnElement="Activity_1ysnl4m" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="388" y="230" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_05a0udv_di" bpmnElement="Flow_05a0udv">
+        <di:waypoint x="188" y="270" />
+        <di:waypoint x="230" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0b4wxxq_di" bpmnElement="Flow_0b4wxxq">
+        <di:waypoint x="757" y="270" />
+        <di:waypoint x="792" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vzgim1_di" bpmnElement="Flow_1vzgim1">
+        <di:waypoint x="892" y="270" />
+        <di:waypoint x="927" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0652izc_di" bpmnElement="Flow_0652izc">
+        <di:waypoint x="610" y="412" />
+        <di:waypoint x="732" y="412" />
+        <di:waypoint x="732" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vd9y0l_di" bpmnElement="Flow_0vd9y0l">
+        <di:waypoint x="888" y="180" />
+        <di:waypoint x="952" y="180" />
+        <di:waypoint x="952" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fo4whc_di" bpmnElement="Flow_1fo4whc">
+        <di:waypoint x="977" y="270" />
+        <di:waypoint x="1017" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wmnln4_di" bpmnElement="Flow_0wmnln4">
+        <di:waypoint x="1067" y="270" />
+        <di:waypoint x="1180" y="270" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1076" y="252" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ad8sfk_di" bpmnElement="Flow_0ad8sfk">
+        <di:waypoint x="1042" y="295" />
+        <di:waypoint x="1042" y="382" />
+        <di:waypoint x="1180" y="382" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1087" y="355" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wqmf37_di" bpmnElement="Flow_1wqmf37">
+        <di:waypoint x="1042" y="295" />
+        <di:waypoint x="1042" y="492" />
+        <di:waypoint x="1180" y="492" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1088" y="474" width="17" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mnfeli_di" bpmnElement="Flow_0mnfeli">
+        <di:waypoint x="1042" y="295" />
+        <di:waypoint x="1042" y="602" />
+        <di:waypoint x="1180" y="602" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1086" y="575" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1teejah_di" bpmnElement="Flow_1teejah">
+        <di:waypoint x="1042" y="295" />
+        <di:waypoint x="1042" y="710" />
+        <di:waypoint x="1180" y="710" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1085" y="683" width="25" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y86rz2_di" bpmnElement="Flow_0y86rz2">
+        <di:waypoint x="1042" y="295" />
+        <di:waypoint x="1042" y="832" />
+        <di:waypoint x="1180" y="832" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1061" y="805" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1og4tl1_di" bpmnElement="Flow_1og4tl1">
+        <di:waypoint x="1280" y="382" />
+        <di:waypoint x="1420" y="382" />
+        <di:waypoint x="1420" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qa6s70_di" bpmnElement="Flow_0qa6s70">
+        <di:waypoint x="1280" y="492" />
+        <di:waypoint x="1420" y="492" />
+        <di:waypoint x="1420" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0remh6x_di" bpmnElement="Flow_0remh6x">
+        <di:waypoint x="1280" y="602" />
+        <di:waypoint x="1420" y="602" />
+        <di:waypoint x="1420" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fxfflb_di" bpmnElement="Flow_0fxfflb">
+        <di:waypoint x="1280" y="710" />
+        <di:waypoint x="1420" y="710" />
+        <di:waypoint x="1420" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1mw4rhc_di" bpmnElement="Flow_1mw4rhc">
+        <di:waypoint x="1280" y="832" />
+        <di:waypoint x="1420" y="832" />
+        <di:waypoint x="1420" y="295" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_150popc_di" bpmnElement="Flow_150popc">
+        <di:waypoint x="1445" y="270" />
+        <di:waypoint x="1495" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07pnv2s_di" bpmnElement="Flow_07pnv2s">
+        <di:waypoint x="1545" y="270" />
+        <di:waypoint x="1670" y="270" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1589" y="252" width="42" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t91cwb_di" bpmnElement="Flow_1t91cwb">
+        <di:waypoint x="1520" y="295" />
+        <di:waypoint x="1520" y="382" />
+        <di:waypoint x="1652" y="382" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1547" y="348" width="45" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jdmd1o_di" bpmnElement="Flow_0jdmd1o">
+        <di:waypoint x="1520" y="295" />
+        <di:waypoint x="1520" y="492" />
+        <di:waypoint x="1652" y="492" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1549" y="467" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1stkwh8_di" bpmnElement="Flow_1stkwh8">
+        <di:waypoint x="1280" y="270" />
+        <di:waypoint x="1395" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gtdkzd_di" bpmnElement="Flow_0gtdkzd">
+        <di:waypoint x="1770" y="270" />
+        <di:waypoint x="1882" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_07jhhym" bpmnElement="Flow_1f1t538">
+        <di:waypoint x="488" y="270" />
+        <di:waypoint x="530" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m522cw_di" bpmnElement="Flow_0m522cw">
+        <di:waypoint x="330" y="270" />
+        <di:waypoint x="388" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p87ouu_di" bpmnElement="Flow_0p87ouu">
+        <di:waypoint x="630" y="270" />
+        <di:waypoint x="707" y="270" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1mn8tzh">
+    <bpmndi:BPMNPlane id="BPMNPlane_0kilmu4" bpmnElement="Activity_08p6ho1">
+      <bpmndi:BPMNShape id="BPMNShape_1x8vhqq" bpmnElement="Activity_15h2q1e" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="180" y="720" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0bzvkuh" bpmnElement="Activity_0h7dk0b">
+        <dc:Bounds x="580" y="720" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_095j09a" bpmnElement="Activity_1mh2nlr" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="180" y="580" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1l5g1uw" bpmnElement="Activity_002ntjp">
+        <dc:Bounds x="570" y="580" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1lbim50" bpmnElement="Gateway_0jo9wpz" isMarkerVisible="true">
+        <dc:Bounds x="-35" y="465" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0xvpf7e" bpmnElement="Activity_03eqn96" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="-180" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_08v0zsg" bpmnElement="Event_09k4lja">
+        <dc:Bounds x="-258" y="472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0vtfsae" bpmnElement="Activity_01ax83e" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="170" y="450" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ljvz0l" bpmnElement="Activity_1906j2d">
+        <dc:Bounds x="570" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1ijkqmp_di" bpmnElement="Gateway_1ijkqmp" isMarkerVisible="true">
+        <dc:Bounds x="765" y="465" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00gh6do_di" bpmnElement="Event_00gh6do" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="892" y="472" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="889" y="515" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18r11dt_di" bpmnElement="Event_0or7zdw" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <dc:Bounds x="882" y="362" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="872" y="405" width="57" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0self6j_di" bpmnElement="Event_06t3jg2" bioc:stroke="#5b176d" bioc:fill="#e1bee7" color:background-color="#e1bee7" color:border-color="#5b176d">
+        <dc:Bounds x="-28" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="-38" y="280" width="57" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00unpri_di" bpmnElement="Event_00unpri">
+        <dc:Bounds x="892" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="866" y="305" width="88" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0j0sh59_di" bpmnElement="Activity_0af46ev" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="360" y="450" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1k2ur75" bpmnElement="Activity_055ne0m" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="370" y="580" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0m5yt2a" bpmnElement="Activity_0l1hl53" bioc:stroke="#205022" bioc:fill="#c8e6c9" color:background-color="#c8e6c9" color:border-color="#205022">
+        <dc:Bounds x="380" y="720" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16vb4rp_di" bpmnElement="Event_03vod3w">
+        <dc:Bounds x="292" y="472" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="293" y="515" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1vz3kst" bpmnElement="Event_1te4jvy">
+        <dc:Bounds x="302" y="602" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="303" y="645" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_00fgmcv" bpmnElement="Event_1p24yru">
+        <dc:Bounds x="302" y="742" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="303" y="785" width="34" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="BPMNEdge_0v96qyc" bpmnElement="Flow_1ihsibl">
+        <di:waypoint x="280" y="760" />
+        <di:waypoint x="302" y="760" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_02p9dvv_di" bpmnElement="Flow_02p9dvv">
+        <di:waypoint x="-10" y="515" />
+        <di:waypoint x="-10" y="760" />
+        <di:waypoint x="180" y="760" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="43" y="723" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0n58x9x" bpmnElement="Flow_1cnazwy">
+        <di:waypoint x="-10" y="515" />
+        <di:waypoint x="-10" y="620" />
+        <di:waypoint x="180" y="620" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="51" y="586" width="58" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0kj7ec3" bpmnElement="Flow_0n91f2n">
+        <di:waypoint x="-80" y="490" />
+        <di:waypoint x="-35" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0ns797o" bpmnElement="Flow_1kf01eq">
+        <di:waypoint x="-222" y="490" />
+        <di:waypoint x="-180" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0o1gwny" bpmnElement="Flow_03pxomd">
+        <di:waypoint x="15" y="490" />
+        <di:waypoint x="170" y="490" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="78" y="472" width="30" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_0e6ufka" bpmnElement="Flow_04mai4p">
+        <di:waypoint x="270" y="490" />
+        <di:waypoint x="292" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0w4efni_di" bpmnElement="Flow_0w4efni">
+        <di:waypoint x="670" y="490" />
+        <di:waypoint x="765" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qiwk5o_di" bpmnElement="Flow_1qiwk5o">
+        <di:waypoint x="670" y="620" />
+        <di:waypoint x="790" y="620" />
+        <di:waypoint x="790" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0eeogig_di" bpmnElement="Flow_0eeogig">
+        <di:waypoint x="680" y="760" />
+        <di:waypoint x="790" y="760" />
+        <di:waypoint x="790" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1a2bndg_di" bpmnElement="Flow_1a2bndg">
+        <di:waypoint x="815" y="490" />
+        <di:waypoint x="892" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1s0z0q9_di" bpmnElement="Flow_1s0z0q9">
+        <di:waypoint x="790" y="465" />
+        <di:waypoint x="790" y="380" />
+        <di:waypoint x="882" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07ycw13_di" bpmnElement="Flow_07ycw13">
+        <di:waypoint x="-10" y="368" />
+        <di:waypoint x="-10" y="465" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jeue4o_di" bpmnElement="Flow_0jeue4o">
+        <di:waypoint x="790" y="465" />
+        <di:waypoint x="790" y="280" />
+        <di:waypoint x="892" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g7bo58_di" bpmnElement="Flow_1g7bo58">
+        <di:waypoint x="460" y="490" />
+        <di:waypoint x="570" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kto72w_di" bpmnElement="Flow_1kto72w">
+        <di:waypoint x="480" y="760" />
+        <di:waypoint x="580" y="760" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pmvg8q_di" bpmnElement="Flow_1pmvg8q">
+        <di:waypoint x="280" y="620" />
+        <di:waypoint x="302" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rpsv29_di" bpmnElement="Flow_1rpsv29">
+        <di:waypoint x="470" y="620" />
+        <di:waypoint x="570" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zy3efb_di" bpmnElement="Flow_0zy3efb">
+        <di:waypoint x="328" y="490" />
+        <di:waypoint x="360" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_183hxao_di" bpmnElement="Flow_183hxao">
+        <di:waypoint x="338" y="620" />
+        <di:waypoint x="370" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1apunjw_di" bpmnElement="Flow_1apunjw">
+        <di:waypoint x="338" y="760" />
+        <di:waypoint x="380" y="760" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
